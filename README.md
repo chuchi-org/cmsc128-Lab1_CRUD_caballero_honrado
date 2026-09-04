@@ -1,4 +1,4 @@
-# Chu-Dos List
+# Chu-Do List
 
 Authors:
     
