@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <!-- header goes here-->
+    </header>
+
+    <main class="container">
+
+        <!-- task creation section -->
+        <section class="task-form-selection">
+            <h2>Create a Task</h2>
+    
+            <!-- form for task creation -->
+            <form id="task-form">
+                
+                <!-- takes task name and due date input -->
+                <input type="text" id="task-name" name="task" placeholder="What are we up to?" required>
+                <input type="datetime-local" id="due-date-time" name="dueDateTime">
+                
+                <!-- values are numbers to match constants in JS -->
+                <select id="priority-select" name="prioritySelect">
+                    <option value="1">High</option>
+                    <option value="2">Medium</option>
+                    <option value="3">Low</option>
+                </select>
+
+                <!-- note: below are default tags, user can create new ones -->
+                <select id="tag" name="tag">
+                    <option value="none" selected>No tag</option>
+                    <option value="none" selected>Academic</option>
+                    <option value="none" selected>Personal</option>
+                </select>
+
+                <button type="submit" id="add-task-btn">Add Task</button>
+            </form>
+        </section>
+        
+        <!-- task list section -->
+        <section class="task-list-section">
+            <h2>Your Tasks</h2>
+            <ul id="task-list">
+            </ul>
+        </section>
+
+    </main>
+    
+    <footer>
+        © idk yet
+    </footer>
+    
+    <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
