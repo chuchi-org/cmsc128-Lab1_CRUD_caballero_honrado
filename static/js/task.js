@@ -1,9 +1,9 @@
 // FILENAME: task.js
 
 // priority constants
-const HIGH = 0;
-const MED  = 1;
-const LOW  = 2;
+const HIGH = 1;
+const MED  = 2;
+const LOW  = 3;
 
 class Task {
     constructor(title, dueDateTime, priority, tag) {
