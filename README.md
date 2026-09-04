@@ -1,4 +1,4 @@
-# Chuchi List
+# Chu-Do List
 
 Authors:
     
