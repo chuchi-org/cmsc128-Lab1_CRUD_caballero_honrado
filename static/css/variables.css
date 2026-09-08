@@ -1,0 +1,15 @@
+/* FILENAME: variables.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Unkempt:wght@400;700&display=swap');
+
+:root {
+    --BLACK: #232d39ff;
+    --BACKGROUND: #f1f9ff;
+    --BTN-COLOR: #e9631a;
+    --DARK-PINK: #f78eaa;
+    --LIGHT-PINK: #eed8d5;
+    --YELLOW: #f6c669;
+    --RED: #b10e3f;
+    --GREEN: #aaa860;
+    --TITLE-FONT: "Unkempt";
+    --TEXT-FONT: "Inter Tight";
+}
