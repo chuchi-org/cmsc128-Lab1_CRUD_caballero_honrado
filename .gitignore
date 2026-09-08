@@ -1,2 +1,4 @@
+# FILENAME: .gitignore
 venv/
 tasks.db
+tasktest.html
