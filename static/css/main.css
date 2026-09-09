@@ -148,22 +148,46 @@ main.container {
     border-bottom: 1px solid #eee;
 }
 
-priority color-coding via data attribute
+/* priority color-coding via data attribute */
 .task-item[data-priority="1"] { border-left: 4px solid var(--RED-ACCENT); }
 .task-item[data-priority="2"] { border-left: 4px solid var(--YELLOW-ACCENT); }
 .task-item[data-priority="3"] { border-left: 4px solid var(--GREEN-ACCENT); }
 
-.task-item.done .task-title {
+.task-item.done {
     text-decoration: line-through;
     color: var(--BLACK);
 }
 
+
+/* task item action buttons */
+.edit-task-btn,
 .delete-task-btn {
-    background: none;
     border: none;
+    border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-family: var(--TEXT-FONT);
+    font-size: 0.9rem;
+    padding: 0.4rem 0.75rem;
 }
+
+.edit-task-btn {
+    background: var(--DARK-PINK);
+    color: var(--BLACK);
+}
+
+.edit-task-btn:hover {
+    background: #f27395;
+}
+
+.delete-task-btn {
+    background: var(--RED-ACCENT);
+    color: var(--BLACK);
+}
+
+.delete-task-btn:hover {
+    opacity: 0.85;
+}
+
 
 footer {
     flex-shrink: 0;
