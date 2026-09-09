@@ -37,6 +37,7 @@ main.container {
     border-radius: 12px;
 }
 
+
 /* header row (title + add task button) */
 .app-header {
     display: flex;
@@ -142,22 +143,27 @@ main.container {
 
 .task-item {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
     gap: 0.6rem;
     padding: 0.6rem 0.4rem;
     border-bottom: 1px solid #eee;
 }
 
-/* priority color-coding via data attribute */
-.task-item[data-priority="1"] { border-left: 4px solid var(--RED-ACCENT); }
-.task-item[data-priority="2"] { border-left: 4px solid var(--YELLOW-ACCENT); }
-.task-item[data-priority="3"] { border-left: 4px solid var(--GREEN-ACCENT); }
-
-.task-item.done {
-    text-decoration: line-through;
-    color: var(--BLACK);
+.task-title {
+    text-align: left;
+    flex: 1;
+    min-width: 0;
 }
 
+/* priority color-coding via data attribute */
+.task-item[data-priority="1"] { border-left: 4px solid var(--RED); }
+.task-item[data-priority="2"] { border-left: 4px solid var(--YELLOW); }
+.task-item[data-priority="3"] { border-left: 4px solid var(--BLUE); }
+
+.task-item.done {
+    opacity: 30%;
+}
 
 /* task item action buttons */
 .edit-task-btn,

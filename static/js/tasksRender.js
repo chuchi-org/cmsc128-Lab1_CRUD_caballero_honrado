@@ -1,5 +1,19 @@
 // FILENAME: tasksRender.js
 
+const PRIORITY_LABELS = { 1: "High", 2: "Medium", 3: "Low"};
+
+function formatPriority(priorityValue) {
+    return PRIORITY_LABELS[priorityValue] ?? "Unknown";
+}
+
+function formatDateTime(isoString) {
+    if (!isoString) return "";
+    const date = new Date(isoString);
+    return date.toLocaleString("en-US", {
+        month: "short", day: "numeric", year: "numeric",
+        hour: "numeric", minute: "2-digit"
+    });
+}
 document.addEventListener('DOMContentLoaded', async function () {
     const response = await fetch('/tasks');
     const data     = await response.json(); // array of "plain objects" from JSON
@@ -19,25 +33,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const titleEl       = document.createElement('span');   // get HTML element
         titleEl.textContent = task.getTitle();                  // set content to HTML element
+        titleEl.classList.add('task-title');
         li.appendChild(titleEl);                                // append to `li` container
 
         const dueDateTimeEl       = document.createElement('span');
-        dueDateTimeEl.textContent = task.getDueDateTime();
+        dueDateTimeEl.textContent = formatDateTime(task.getDueDateTime());
+        titleEl.classList.add('task-duedate');
         li.appendChild(dueDateTimeEl);
-        
-        
-        const priorityEl       = document.createElement('span');
-        priorityEl.textContent = task.getPriority();
-        li.appendChild(priorityEl);
         
         const tagEl       = document.createElement('span');
         tagEl.textContent = task.getTag();
+        titleEl.classList.add('task-tag');
         li.appendChild(tagEl);
-        
-        const createdAtEl       = document.createElement('span');
-        createdAtEl.textContent = task.getCreatedAt();
-        li.appendChild(createdAtEl);
-        
         
         const isDoneEl       = document.createElement('input');
         isDoneEl.type = 'checkbox';
@@ -67,6 +74,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         const editEl = document.createElement('button');
         editEl.textContent = "Edit Task";
         editEl.addEventListener('click', () => {
+            document.getElementById('form-header').textContent = "Edit Task";
+
             document.getElementById('task-name').value = task.getTitle();
             document.getElementById('due-date-time').value = task.getDueDateTime();
             document.getElementById('priority-select').value = task.getPriority();
