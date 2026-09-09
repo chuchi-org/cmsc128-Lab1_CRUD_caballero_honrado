@@ -45,9 +45,9 @@
                         <!-- note: below are default tags, user can create new ones -->
                         <p>Tag</p>
                         <select id="tag" name="tag">
-                            <option value="none"     selected>No tag</option>
-                            <option value="academic" selected>Academic</option>
-                            <option value="personal" selected>Personal</option>
+                            <option value="none" selected>No tag</option>
+                            <option value="academic">Academic</option>
+                            <option value="personal">Personal</option>
                         </select>
 
                         <br>
@@ -71,7 +71,7 @@
         
         <!-- JS scripts -->
         <script src = "{{ url_for('static', filename='js/task.js') }}"></script>
-        <script src = "{{ url_for('static', filename='js/taskRender.js') }}"></script>
+        <script src = "{{ url_for('static', filename='js/tasksRender.js') }}"></script>
         <script src = "{{ url_for('static', filename='js/ui.js') }}"></script>
     </body>
 </html>
