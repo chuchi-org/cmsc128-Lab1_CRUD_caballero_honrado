@@ -46,8 +46,8 @@
                         <p>Tag</p>
                         <select id="tag" name="tag">
                             <option value="none" selected>No tag</option>
-                            <option value="none" selected>Academic</option>
-                            <option value="none" selected>Personal</option>
+                            <option value="academic">Academic</option>
+                            <option value="personal">Personal</option>
                         </select>
 
                         <br>
@@ -69,6 +69,9 @@
             © 2026 chuhchi-org
         </footer>
         
+        <!-- JS scripts -->
+        <script src = "{{ url_for('static', filename='js/task.js') }}"></script>
+        <script src = "{{ url_for('static', filename='js/tasksRender.js') }}"></script>
         <script src = "{{ url_for('static', filename='js/ui.js') }}"></script>
         <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
     </body>
