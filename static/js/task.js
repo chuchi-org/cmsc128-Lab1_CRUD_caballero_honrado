@@ -27,6 +27,10 @@ class Task {
         return this.title;
     }
 
+    getId() {
+        return this.id;
+    }
+
     getDueDateTime() {
         return this.dueDateTime;
     }
