@@ -9,10 +9,14 @@ document.addEventListener('DOMContentLoaded',function () {
     addTaskBtn.addEventListener('click', function () {
         formSection.classList.toggle('hidden');
         console.log('Add button clicked.');
+        
         // reset form if closed
         if (formSection.classList.contains('hidden')) {
             form.reset();
         }
+        
+        delete form.dataset.editingId;
+        document.getElementById('submit-btn').textContent = "Add Task";
     });
 
     form.addEventListener('submit', async function (event) {
@@ -27,14 +31,35 @@ document.addEventListener('DOMContentLoaded',function () {
             created_at: new Date().toISOString()
         };
 
+        const editingId = form.dataset.editingId;
+
         // POST payload with fetch
-        const response = await fetch('/tasks', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(payload)
-        });
+        let response;
+        if ( editingId ) {
+            // editing existing task
+            payload.is_done = form.dataset.editingIsDone === 'true' ? 1 : 0;
+            response = await fetch(`/tasks/${editingId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify(payload)
+            });    
+        } else {
+            // create new task
+            response = await fetch('/tasks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        }
+
+        /*
+        */
 
         if (response.ok) {
+            // reset edit state before reloading
+            delete form.dataset.editingId;
+            delete form.dataset.editingIsDone;
+            document.getElementById('submit-btn').textContent = "Add Task";
             location.reload();  // reload page to render fetched data
         } else {
             console.error('Failed to create task:', response.status);
