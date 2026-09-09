@@ -1,14 +1,16 @@
-from flask import Flask,jsonify, request
+from flask import Flask,jsonify, request, render_template
 import sqlite3
 from pathlib import Path
 
 # dynamically creates an absolute file path to tasks.db located in the same folder of app.py
 # __file__ : Python's built-in reference to the current script's path
 DB_PATH = Path(__file__).parent / "tasks.db"
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates", static_folder="../static")
 
+@app.route("/")
+def index():
+    return render_template("index.html")
 @app.route("/tasks", methods=["GET"])
-
 # read
 def get_tasks():
     # defining connection & cursor
